@@ -37,6 +37,6 @@ function Update () {
 	}
 	function OnGUI(){
 	var GUIxMin : float = (Screen.width / 2) - (crosshairImage.width / 2);
-    var GUIyMin : float = (Screen.height / 4) ;
+    var GUIyMin : float = (Screen.height / 3) ;
     GUI.DrawTexture(new Rect(GUIxMin, GUIyMin, crosshairImage.width, crosshairImage.height), crosshairImage);
 }

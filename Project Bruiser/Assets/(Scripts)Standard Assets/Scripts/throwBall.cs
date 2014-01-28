@@ -19,13 +19,16 @@ private int random = 0;
 private GameObject theBrain;
 private Brain brainScript;
 public string endzoneName;
+public GameObject LineOfScrimmage;
 
 void Start(){
 	physicsScript = gameObject.GetComponent("tsg_PropulsionPhysics")as tsg_PropulsionPhysics;
 	hasBall = 1;
 	theBrain = GameObject.Find("Brain") as GameObject;
 	brainScript = theBrain.GetComponent("Brain") as Brain;
-
+	if(hasBall == 1){
+		brainScript.QBSetBall(1);
+	}
 }
 
 void Update () {
@@ -41,29 +44,38 @@ void Update () {
 	if(Input.GetKeyDown(KeyCode.Alpha3)){
 			random = 2;
 			print("long");
-		};
+		}
+		if((Input.GetKeyDown(KeyCode.H))||(Input.GetKeyDown(KeyCode.Mouse1))){
+			brainScript.setHiked(1);
+			destroyLineOfScrimmage();
+
+		}
+
 		
 	
-if(hasBall == 1){
-	if(Input.GetMouseButtonUp(0)){
-		switch(random){
+	if((hasBall == 1) && (brainScript.isHiked() == 1)){
+		if(Input.GetMouseButtonUp(0)){
+			switch(random){
 				case 0:
 					print("Left");
 					physicsScript.target = leftThrow;
 					theFootball = Instantiate(theFootballPrefab,transform.position,transform.rotation) as GameObject;
 					hasBall = 0;
+					brainScript.QBSetBall(0);
 					break;
 				case 1:
 					print("Center");
 					physicsScript.target = centerThrow;
 					theFootball = Instantiate(theFootballPrefab,transform.position,transform.rotation) as GameObject;
 					hasBall = 0;
+					brainScript.QBSetBall(0);
 					break;
 				case 2:
 					print("Right");
 					physicsScript.target = rightThrow;
 					theFootball = Instantiate(theFootballPrefab,transform.position,transform.rotation) as GameObject;
 					hasBall = 0;
+					brainScript.QBSetBall(0);
 					break;/*
 				case 3:
 					print("FLeft");
@@ -101,10 +113,17 @@ if(hasBall == 1){
 					theFootball = Instantiate(theFootballPrefab,transform.position,transform.rotation) as GameObject;
 					hasBall = 0;
 					break;	*/		
-				}
 			}
 		}
+		if((gameObject.transform.position.z >= 467 && gameObject.transform.position.z <= 507)
+				   &&(gameObject.transform.position.x >= 174 && gameObject.transform.position.x <= 311)){
+					brainScript.score0 += 6;
+					print("TouchDown!!!!");
+					brainScript.setHiked(0);
+					Application.LoadLevel("Bruiser1");
+				}
 	}
+}
 void OnTriggerEnter(Collider theCollider){
 		if(theCollider.gameObject.name ==endzoneName ){
 			brainScript.score0 += 6;
@@ -112,6 +131,9 @@ void OnTriggerEnter(Collider theCollider){
 		/*if(collider.gameObject.name == route.name){
 			routeNum += 1;
 		}*/
+	}
+	public void destroyLineOfScrimmage (){
+		Destroy(LineOfScrimmage);
 	}
 }
 

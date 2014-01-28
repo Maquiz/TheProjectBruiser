@@ -14,6 +14,7 @@ public class WRAI : MonoBehaviour {
 	private GameObject theBrain;
 	private Brain brainScript;
 	private int routeNum;
+	private Transform FowardTransform;
 	
 	void Start () {
 		theBrain = GameObject.Find("Brain") as GameObject;
@@ -25,30 +26,42 @@ public class WRAI : MonoBehaviour {
 	
 	// Update is called once per frame+
 	void Update () {
-		if(routeNum == 0){
-			GetComponent<NavMeshAgent>().destination = route.position;
+		if(brainScript.isHiked() == 1){
+			GetComponent<NavMeshAgent>().speed = 12f;
+			if(routeNum == 0){
+				GetComponent<NavMeshAgent>().destination = route.position;
+				
+			}
 			
-		}
-		
-		if(routeNum == 1){
-			GetComponent<NavMeshAgent>().destination = route1.position;
-			
-		}//	routePoint = route1.tag;
-		if(routeNum == 2){
-			GetComponent<NavMeshAgent>().destination = route2.position;
-		}
-		if(routeNum == 3){
-			GetComponent<NavMeshAgent>().destination = Endzone.position;
-			
-		//	routePoint = route2.tag;
-		}
-		if (hasBall == 1){
-			print("We have the ball");
-			//theBrain.ballCarrier = "WR";
-			//print(theBrain.ballCarrier);
-			//WaitForSeconds(5);
-			GetComponent<NavMeshAgent>().destination = Endzone.position;
-			//Application.LoadLevel("Bruiser1");
+			if(routeNum == 1){
+				GetComponent<NavMeshAgent>().destination = route1.position;
+				
+			}//	routePoint = route1.tag;
+			if(routeNum == 2){
+				GetComponent<NavMeshAgent>().destination = route2.position;
+			}
+			if(routeNum == 3){
+				GetComponent<NavMeshAgent>().destination = Endzone.position;
+				
+			//	routePoint = route2.tag;
+			}
+			if (hasBall == 1){
+			//	print(this.rigidbody.position.z); //Checking Z Position for Ball Carrier
+				//theBrain.ballCarrier = "WR";
+				//print(theBrain.ballCarrier);
+				//WaitForSeconds(5);
+				brainScript.setDefensivePersuit(gameObject.transform);
+				brainScript.setStateInt(1);
+				GetComponent<NavMeshAgent>().destination = Endzone.position;
+				//Application.LoadLevel("Bruiser1");
+				if((gameObject.transform.position.z >= 467 && gameObject.transform.position.z <= 507)
+				   &&(gameObject.transform.position.x >= 174 && gameObject.transform.position.x <= 311)){
+					brainScript.score0 += 6;
+					print("TouchDown!!!!");
+					brainScript.setHiked(0);
+					Application.LoadLevel("Bruiser1");
+				}
+			}
 		}
 			
 	}
@@ -73,12 +86,12 @@ public class WRAI : MonoBehaviour {
 		}
 		if(collision.gameObject.name == route1.name)
 		{
-			print ("Route 0 collision");
+			print ("Route 1 collision");
 			routeNum +=1;
 		}
 		if(collision.gameObject.name == route2.name)
 		{
-			print ("Route 0 collision");
+			print ("Route 2 collision");
 			routeNum +=1;
 		}
 		/*if(collision.gameObject.tag == routePoint){
@@ -86,12 +99,20 @@ public class WRAI : MonoBehaviour {
 		}*/
 	}
 void OnTriggerEnter(Collider theCollider){
-		if(theCollider.gameObject.name ==endzoneName ){
+		print(theCollider.name);
+		if(theCollider.gameObject.name == endzoneName ){
 			brainScript.score0 += 6;
 		}
 		/*if(collider.gameObject.name == route.name){
 			routeNum += 1;
 		}*/
 	}
-	
+
+	public void setFowardTransform(Transform thisTransform){
+		FowardTransform = thisTransform;
+	}
+
+	public Transform getFowardTransform(){
+		return FowardTransform;
+	}
 }

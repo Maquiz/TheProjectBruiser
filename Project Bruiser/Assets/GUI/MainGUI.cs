@@ -41,11 +41,13 @@ public class MainGUI : MonoBehaviour {
 	void OnGUI () {
 		GUI.skin = thisMetalGUISkin;
 		if (GUI.Button (new Rect (10,650,150,100), "Restart")) {
+			brainScript.setHiked(0);
 			Application.LoadLevel("Bruiser1");
 		}
 		if (GUI.Button (new Rect (300,650,150,100), "Main Menu")) {
 			Screen.lockCursor = false;
 			Screen.showCursor = true;
+			brainScript.setHiked(0);
 			Application.LoadLevel("MainMenuScene");
 			
 		}

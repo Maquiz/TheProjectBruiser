@@ -1,9 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\(Scripts)Standard Assets\Scripts\routeLife.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\(Scripts)Standard Assets\Scripts\charScript.js">
     <Files>
-      <File FileName="Assets\(Scripts)Standard Assets\Scripts\routeLife.cs" Line="19" Column="22" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\routeLife.cs" Line="1" Column="1" />
       <File FileName="Assets\(Scripts)Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="1" Column="1" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\WRAI.cs" Line="1" Column="1" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\footballLife.cs" Line="1" Column="1" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\Brain.cs" Line="22" Column="2" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\throwBall.cs" Line="25" Column="64" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\DEAI.cs" Line="31" Column="5" />
+      <File FileName="Assets\OffenseScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\GUI\MainGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\charScript.js" Line="32" Column="20" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\Menu_UI.cs" Line="1" Column="1" />
+      <File FileName="Assets\MovementScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\DefensiveMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\(Scripts)Standard Assets\Scripts\camFollow.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -23,6 +23,8 @@ void OnCollisionEnter(Collision collision){
 	if(collision.gameObject.tag == terrainTag){
 		brainScript1.score1 +=1;
 		print("we hit the ground");
+		brainScript1.setHiked(0);
+		brainScript1.nextDown();
 		Application.LoadLevel("Bruiser1");
 	}
 	if(collision.gameObject.tag == defenseTag){

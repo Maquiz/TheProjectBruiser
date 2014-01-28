@@ -1,5 +1,4 @@
 #pragma strict
-
 var rotationSpeed : float = 10;
 var walkSpeed :  float = 7;
 var gravity : float = 50;
@@ -11,10 +10,17 @@ var throwAnimation : String;
 var jumpAnimation : String;
 var isQB : int;
 var canJump : boolean;
+//Sprint Varriables
+var sprint : boolean;
+var baseSprint : int;
+var maxSprint : int  = 25;
+var sprintTimer : int = 100;
+
 
 function Start(){
 	canJump = true;
-
+	sprint = false;
+	baseSprint = walkSpeed;
 }
 
 function Update () {
@@ -23,20 +29,41 @@ function Update () {
 	var horizontal :  Vector3 = transform.TransformDirection(Vector3.right);
 	var height : Vector3 = transform.TransformDirection(Vector3.up);
 	
+	if((sprintTimer < 100) && (Input.GetKeyDown(KeyCode.LeftShift) == false)){
+		walkSpeed = baseSprint;
+		sprintTimer++;
+		print(sprintTimer);
+		sprint = false;
+		
+	}
 	if(Input.GetKeyDown("space")&& canJump == true){
 		animation.CrossFade(jumpAnimation,0.2);
 		jump();
 		canJump = false;
 	}
 	
+	if(Input.GetKeyDown(KeyCode.LeftShift)){
+		sprint = true;
+		if((sprint == true)&&(sprintTimer >= 0)){
+		walkSpeed = maxSprint;
+		//sprint = false;
+		sprintTimer--;
+		print(sprintTimer);
+		//sprint = false;
+		}
+	}
+	
+	
 	if(Input.GetAxis("Vertical") || Input.GetAxis("Horizontal")){
 		animation.CrossFade(walkAnimation,0.2);
 		animation[walkAnimation].speed = walkSpeed/10;
 		Controller.Move((vertical * (walkSpeed * Input.GetAxis("Vertical")))*Time.deltaTime);
 		Controller.Move((horizontal * (walkSpeed * Input.GetAxis("Horizontal")))*Time.deltaTime);
-	}else{
+	}
+	else{
 		animation.CrossFade(idleAnimation,0.2);
 	}
+	
 	if(Input.GetAxis("Mouse X")){
 		yRot += 10 * Input.GetAxis("Mouse X");
 	}
