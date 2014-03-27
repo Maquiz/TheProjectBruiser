@@ -53,6 +53,11 @@ function Update () {
 		}
 	}
 	
+	if(Input.GetKeyDown(KeyCode.M)){
+		Controller.Move(vertical*walkSpeed*Time.deltaTime*10);
+		print("Herc Smash");
+	}
+	
 	
 	if(Input.GetAxis("Vertical") || Input.GetAxis("Horizontal")){
 		animation.CrossFade(walkAnimation,0.2);

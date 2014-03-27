@@ -30,15 +30,18 @@ public class WRAI : MonoBehaviour {
 			GetComponent<NavMeshAgent>().speed = 12f;
 			if(routeNum == 0){
 				GetComponent<NavMeshAgent>().destination = route.position;
+				//print (this.name +" " + routeNum);
 				
 			}
 			
 			if(routeNum == 1){
 				GetComponent<NavMeshAgent>().destination = route1.position;
+				//print (this.name +" " + routeNum);
 				
 			}//	routePoint = route1.tag;
 			if(routeNum == 2){
 				GetComponent<NavMeshAgent>().destination = route2.position;
+				//print (this.name +" " + routeNum);
 			}
 			if(routeNum == 3){
 				GetComponent<NavMeshAgent>().destination = Endzone.position;
@@ -82,17 +85,21 @@ public class WRAI : MonoBehaviour {
 		if(collision.gameObject.name == route.name)
 		{
 			print ("Route 0 collision");
-			routeNum +=1;
+			print (this.name +" " + routeNum);
+			routeNum ++;
+
 		}
 		if(collision.gameObject.name == route1.name)
 		{
 			print ("Route 1 collision");
-			routeNum +=1;
+			print (this.name +" " + routeNum);
+			routeNum ++;
 		}
 		if(collision.gameObject.name == route2.name)
 		{
 			print ("Route 2 collision");
-			routeNum +=1;
+			print (this.name +" " + routeNum);
+			routeNum ++;
 		}
 		/*if(collision.gameObject.tag == routePoint){
 			routeNum++;
@@ -100,7 +107,7 @@ public class WRAI : MonoBehaviour {
 	}
 void OnTriggerEnter(Collider theCollider){
 		print(theCollider.name);
-		if(theCollider.gameObject.name == endzoneName ){
+		if(theCollider.gameObject.name == endzoneName && hasBall == 1){
 			brainScript.score0 += 6;
 		}
 		/*if(collider.gameObject.name == route.name){

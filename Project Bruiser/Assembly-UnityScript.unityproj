@@ -80,6 +80,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
      <None Include="Assets\BLENDSWAP_LICENSE.txt" />
+     <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="Behave.Unity.Assets">
  <HintPath>Assets\Behave\Behave.Unity.Assets.dll</HintPath>
  </Reference>

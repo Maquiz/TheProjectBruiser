@@ -85,7 +85,7 @@ public class DEAI : MonoBehaviour {
 		if((collision.gameObject.name == persuit.name) &&  (brainScript.getQBBall() ==  1) && (blitzing() == 1)){
 			brainScript.setEndPos(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
 			print (brainScript.getEndPos());
-			print ("QB SACKED I HIT" + persuit.name);
+			print ("QB SACKED I HIT" + persuit.name + " " + this.name);
 			brainScript.score1 += 1;
 			brainScript.setHiked(0);
 			brainScript.nextDown();

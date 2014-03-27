@@ -16,6 +16,7 @@ public class routeLife : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision collision) {
 		if(collision.gameObject.tag == WR){
+			//yield return new WaitForSeconds(5);
 			Destroy(gameObject);
 			print("WRHIT");
 		}
